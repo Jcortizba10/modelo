@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-docker-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: my-docker-app
+  template:
+    metadata:
+      labels:
+        app: my-docker-app
+    spec:
+      containers:
+      - name: my-docker-container
+        image: <your-dockerhub-username>/<your-image>:<tag>  # Especifica la imagen de Docker Hub aquí
+        ports:
+        - containerPort: 80  # Cambia el puerto según el de tu aplicación
